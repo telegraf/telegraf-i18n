@@ -1,0 +1,6 @@
+greeting: Hello {{username}}
+cart: You have {{pluralize appleCount 'apple' 'apples'}}
+joke:
+  - First joke
+  - Second joke
+  - Third joke
