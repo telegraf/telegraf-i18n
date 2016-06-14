@@ -14,10 +14,10 @@ $ npm install telegraf-i18n
 ## Example
   
 ```js
-var Telegraf = require('telegraf')
-var i18n = require('telegraf-i18n')
+const Telegraf = require('telegraf')
+const i18n = require('telegraf-i18n')
 
-var app = new Telegraf(process.env.BOT_TOKEN)
+const app = new Telegraf(process.env.BOT_TOKEN)
 
 // telegraf-i18n will save current locale setting in session(if available)
 app.use(Telegraf.memorySession())
@@ -27,6 +27,7 @@ Add i18n middleware.
 Directory structure:
 ├── locales
 │   ├── en.yaml
+│   ├── it.json
 │   └── ru.yaml
 └── bot.js
 */
@@ -36,11 +37,11 @@ app.use(i18n(
   directory: path.resolve(__dirname, 'locales')
 ))
 
-app.hears('/start', function * () {
-  var message = this.i18n.t('greeting', {
+app.hears('/start', (ctx) => {
+  const message = this.i18n.t('greeting', {
     username: this.from.username
   })
-  yield this.reply(message)
+  return ctx.reply(message)
 })
 
 app.startPolling()
@@ -53,10 +54,10 @@ See full [example](/examples).
 Telegraf user context props and functions:
 
 ```js
-recast.onXXX(function * (){
-  this.i18n.locale()                    // Get current locale 
-  this.i18n.locale(code)                // Set current locale  
-  this.i18n.t(resourceKey, [context])   // Get resource value (context will be used by Handlebars)
+app.use((ctx) => {
+  ctx.i18n.locale()                    // Get current locale 
+  ctx.i18n.locale(code)                // Set current locale  
+  ctx.i18n.t(resourceKey, [context])   // Get resource value (context will be used by Handlebars)
 });
 ```
 

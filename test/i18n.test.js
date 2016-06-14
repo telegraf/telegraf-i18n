@@ -1,6 +1,6 @@
-var Telegraf = require('telegraf')
-var should = require('should')
-var Flow = require('../lib/i18n')
+const Telegraf = require('telegraf')
+const should = require('should')
+const i18n = require('../lib/i18n')
 
 describe('Telegraf Flow', function () {
 
