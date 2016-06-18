@@ -1,7 +1,8 @@
-# i18n for Telegraf
-
 [![Build Status](https://img.shields.io/travis/telegraf/telegraf-i18n.svg?branch=master&style=flat-square)](https://travis-ci.org/telegraf/telegraf-i18n)
 [![NPM Version](https://img.shields.io/npm/v/telegraf-i18n.svg?style=flat-square)](https://www.npmjs.com/package/telegraf-i18n)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](http://standardjs.com/)
+
+# i18n for Telegraf
 
 Internationalization middleware for [Telegraf (Telegram bot framework)](https://github.com/telegraf/telegraf).
 
