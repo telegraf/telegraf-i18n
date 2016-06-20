@@ -1,6 +1,6 @@
 var Telegraf = require('telegraf')
 var path = require('path')
-var i18n = require('../lib/i18n')
+var I18n = require('../lib/i18n')
 
 var telegraf = new Telegraf(process.env.BOT_TOKEN)
 
@@ -8,9 +8,10 @@ var telegraf = new Telegraf(process.env.BOT_TOKEN)
 telegraf.use(Telegraf.memorySession())
 
 // Add middleware
-telegraf.use(i18n({
+const i18n = new I18n({
   directory: path.resolve(__dirname, 'locales')
-}))
+})
+telegraf.use(i18n.middleware())
 
 // Start bot
 telegraf.hears('/start', (ctx) => {
