@@ -4,7 +4,7 @@
 
 # i18n for Telegraf
 
-Internationalization middleware for [Telegraf (Telegram bot framework)](https://github.com/telegraf/telegraf).
+Internationalization middleware for [Telegraf](https://github.com/telegraf/telegraf).
 
 ## Installation
 
