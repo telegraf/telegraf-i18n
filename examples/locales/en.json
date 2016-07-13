@@ -1,6 +1,7 @@
 {
   "greeting": "Hello {{username}}",
   "cart": "{{from.first_name}} {{from.last_name}}, you probably have {{pluralize appleCount 'apple' 'apples'}}",
+  "add": "Add",
   "joke": [
     "First joke",
     "Second joke",
