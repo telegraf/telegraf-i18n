@@ -11,10 +11,11 @@ telegraf.use(Telegraf.memorySession())
 const i18n = new I18n({
   directory: path.resolve(__dirname, 'locales')
 })
+
 telegraf.use(i18n.middleware())
 
 // Start bot
-telegraf.hears('/start', (ctx) => {
+telegraf.command('/start', (ctx) => {
   var message = ctx.i18n.t('greeting', {
     username: ctx.from.username
   })
@@ -22,17 +23,17 @@ telegraf.hears('/start', (ctx) => {
 })
 
 // Set locale to `en`
-telegraf.hears('/en', (ctx) => {
+telegraf.command('/en', (ctx) => {
   ctx.i18n.locale('en')
 })
 
 // Set locale to `ru`
-telegraf.hears('/ru', (ctx) => {
+telegraf.command('/ru', (ctx) => {
   ctx.i18n.locale('ru')
 })
 
 // Add apple to cart
-telegraf.hears('/add', (ctx) => {
+telegraf.command('/add', (ctx) => {
   ctx.session.appleCount = ctx.session.appleCount || 0
   ctx.session.appleCount++
   var message = ctx.i18n.t('cart', {appleCount: ctx.session.appleCount})
@@ -40,13 +41,13 @@ telegraf.hears('/add', (ctx) => {
 })
 
 // Add apple to cart
-telegraf.hears('/cart', (ctx) => {
+telegraf.command('/cart', (ctx) => {
   var message = ctx.i18n.t('cart', {appleCount: ctx.session.appleCount || 0})
   return ctx.reply(message)
 })
 
 // Random joke
-telegraf.hears('/joke', (ctx) => {
+telegraf.command('/joke', (ctx) => {
   return ctx.reply(ctx.i18n.t('joke'))
 })
 

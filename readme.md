@@ -39,8 +39,8 @@ app.use(i18n(
 ))
 
 app.hears('/start', (ctx) => {
-  const message = this.i18n.t('greeting', {
-    username: this.from.username
+  const message = ctx.i18n.t('greeting', {
+    username: ctx.from.username
   })
   return ctx.reply(message)
 })

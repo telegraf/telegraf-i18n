@@ -1,7 +1,7 @@
 greeting: Привет {{username}}
-cart: У вас потенциально есть {{pluralize appleCount 'яблоко' 'яблокa' 'яблок'}}
+cart: В вашей корзине {{pluralize appleCount 'яблоко' 'яблокa' 'яблок'}}
+add: Добавить
 joke:
   - Первая шутка
   - Вторая шутка
   - Еще одна шутка
-
