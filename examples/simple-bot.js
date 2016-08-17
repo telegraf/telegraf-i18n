@@ -1,8 +1,8 @@
-var Telegraf = require('telegraf')
-var path = require('path')
-var I18n = require('../lib/i18n')
+const Telegraf = require('telegraf')
+const path = require('path')
+const I18n = require('../lib/i18n')
 
-var telegraf = new Telegraf(process.env.BOT_TOKEN)
+const telegraf = new Telegraf(process.env.BOT_TOKEN)
 
 // For testing only. Session will be lost on app restart
 telegraf.use(Telegraf.memorySession())
@@ -16,7 +16,7 @@ telegraf.use(i18n.middleware())
 
 // Start bot
 telegraf.command('/start', (ctx) => {
-  var message = ctx.i18n.t('greeting', {
+  const message = ctx.i18n.t('greeting', {
     username: ctx.from.username
   })
   return ctx.reply(message)
@@ -36,13 +36,13 @@ telegraf.command('/ru', (ctx) => {
 telegraf.command('/add', (ctx) => {
   ctx.session.appleCount = ctx.session.appleCount || 0
   ctx.session.appleCount++
-  var message = ctx.i18n.t('cart', {appleCount: ctx.session.appleCount})
+  const message = ctx.i18n.t('cart', {appleCount: ctx.session.appleCount})
   return ctx.reply(message)
 })
 
 // Add apple to cart
 telegraf.command('/cart', (ctx) => {
-  var message = ctx.i18n.t('cart', {appleCount: ctx.session.appleCount || 0})
+  const message = ctx.i18n.t('cart', {appleCount: ctx.session.appleCount || 0})
   return ctx.reply(message)
 })
 
@@ -51,4 +51,4 @@ telegraf.command('/joke', (ctx) => {
   return ctx.reply(ctx.i18n.t('joke'))
 })
 
-telegraf.startPolling()
+telegraf.startPolling(60)
