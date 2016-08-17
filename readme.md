@@ -16,27 +16,28 @@ $ npm install telegraf-i18n
   
 ```js
 const Telegraf = require('telegraf')
-const i18n = require('telegraf-i18n')
-
-const app = new Telegraf(process.env.BOT_TOKEN)
-
-// telegraf-i18n will save current locale setting in session(if available)
-app.use(Telegraf.memorySession())
+const TelegrafI18n = require('telegraf-i18n')
 
 /* 
-Add i18n middleware.
-Directory structure:
+Example directory structure:
 ├── locales
 │   ├── en.yaml
 │   ├── it.json
 │   └── ru.yaml
 └── bot.js
 */
-app.use(i18n(
+
+const i18n = new TelegrafI18n({
   defaultLocale: 'en',
   allowMissing: true,
   directory: path.resolve(__dirname, 'locales')
-))
+})
+
+const app = new Telegraf(process.env.BOT_TOKEN)
+
+// telegraf-i18n will save current locale setting in session(if available)
+app.use(Telegraf.memorySession())
+app.use(i18n.middleware())
 
 app.hears('/start', (ctx) => {
   const message = ctx.i18n.t('greeting', {
