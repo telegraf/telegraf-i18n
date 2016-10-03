@@ -1,6 +1,6 @@
 {
   "name": "telegraf-i18n",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "description": "Telegraf i18n engine",
   "main": "lib/i18n.js",
   "repository": {
