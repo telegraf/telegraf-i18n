@@ -28,28 +28,26 @@
     "node": ">=6.2.1"
   },
   "files": [
-    "lib/i18n.js",
-    "lib/context.js",
-    "lib/handlebars-plural.js"
+    "lib"
   ],
   "scripts": {
-    "test": "eslint . && mocha test --require should"
+    "test": "eslint . && ava"
   },
   "dependencies": {
+    "compile-template": "^0.2.0",
     "debug": "^2.2.0",
-    "handlebars": "^4.0.5",
     "yamljs": "^0.2.7"
   },
   "peerDependencies": {
     "telegraf": "^2.0.0 || ^3.0.0"
   },
   "devDependencies": {
+    "ava": "^0.16.0",
     "eslint": "^3.7.0",
     "eslint-config-standard": "^6.2.0",
-    "eslint-plugin-mocha": "^4.6.0",
+    "eslint-plugin-ava": "^3.1.0",
     "eslint-plugin-promise": "^2.0.1",
     "eslint-plugin-standard": "^2.0.1",
-    "mocha": "^3.1.0",
     "should": "^11.1.0",
     "telegraf": "^3.0.0"
   }

@@ -4,7 +4,7 @@ const I18n = require('../lib/i18n')
 
 const telegraf = new Telegraf(process.env.BOT_TOKEN)
 
-// For testing only. Session will be lost on app restart
+// For testing only. Information about current locale will be lost on app restart
 telegraf.use(Telegraf.memorySession())
 
 // Add middleware
@@ -44,11 +44,6 @@ telegraf.command('/add', (ctx) => {
 telegraf.command('/cart', (ctx) => {
   const message = ctx.i18n.t('cart', {appleCount: ctx.session.appleCount || 0})
   return ctx.reply(message)
-})
-
-// Random joke
-telegraf.command('/joke', (ctx) => {
-  return ctx.reply(ctx.i18n.t('joke'))
 })
 
 telegraf.startPolling(60)

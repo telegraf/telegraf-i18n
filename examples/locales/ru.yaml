@@ -1,7 +1,3 @@
-greeting: Привет {{username}}
-cart: В вашей корзине {{pluralize appleCount 'яблоко' 'яблокa' 'яблок'}}
-add: Добавить
-joke:
-  - Первая шутка
-  - Вторая шутка
-  - Еще одна шутка
+greeting: Привет ${username}
+cart: В вашей корзине ${pluralize(appleCount, 'яблоко', 'яблокa', 'яблок')}
+add: Добавить в корзину
