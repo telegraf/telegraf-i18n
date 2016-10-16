@@ -1,3 +1,6 @@
-describe('Telegraf Flow', function () {
+require('should')
+const test = require('ava')
+
+test('', (t) => {
 
 })

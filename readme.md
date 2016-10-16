@@ -6,6 +6,10 @@
 
 Internationalization middleware for [Telegraf](https://github.com/telegraf/telegraf).
 
+**Note:** `telegraf-i18n v4.x` moved to use [ES6 template strings](https://github.com/dotcypress/compile-template) instead of Handlebars[*](https://github.com/wycats/handlebars.js/pull/1176)
+
+🚨 Sanitaze all input or don't update to `4.x` if you have user-generated content in templates.
+
 ## Installation
 
 ```js
@@ -19,6 +23,7 @@ const Telegraf = require('telegraf')
 const TelegrafI18n = require('telegraf-i18n')
 
 /* 
+yaml and json are ok
 Example directory structure:
 ├── locales
 │   ├── en.yaml
