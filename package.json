@@ -36,7 +36,7 @@
   "dependencies": {
     "compile-template": "^0.2.0",
     "debug": "^2.2.0",
-    "yamljs": "^0.2.7"
+    "js-yaml": "^3.6.1"
   },
   "peerDependencies": {
     "telegraf": "^2.0.0 || ^3.0.0"
