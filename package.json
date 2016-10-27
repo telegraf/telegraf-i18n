@@ -1,6 +1,6 @@
 {
   "name": "telegraf-i18n",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "description": "Telegraf i18n engine",
   "main": "lib/i18n.js",
   "repository": {
@@ -8,13 +8,10 @@
     "url": "git+ssh://git@github.com/telegraf/telegraf-i18n.git"
   },
   "keywords": [
-    "telegram",
     "telegram bot",
     "telegraf",
     "bot framework",
     "i18n",
-    "l10n",
-    "localization",
     "internationalization",
     "middleware"
   ],
@@ -36,7 +33,7 @@
   "dependencies": {
     "compile-template": "^0.2.0",
     "debug": "^2.2.0",
-    "yamljs": "^0.2.7"
+    "js-yaml": "^3.6.1"
   },
   "peerDependencies": {
     "telegraf": "^2.0.0 || ^3.0.0"
