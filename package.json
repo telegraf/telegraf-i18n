@@ -8,13 +8,10 @@
     "url": "git+ssh://git@github.com/telegraf/telegraf-i18n.git"
   },
   "keywords": [
-    "telegram",
     "telegram bot",
     "telegraf",
     "bot framework",
     "i18n",
-    "l10n",
-    "localization",
     "internationalization",
     "middleware"
   ],
