@@ -39,8 +39,7 @@ const i18n = new TelegrafI18n({
 })
 
 // Also you can provide i18n data directly
-i18n.addLocale('en', {greeting: 'Hello!'})
-
+i18n.loadLocale('en', {greeting: 'Hello!'})
 
 const app = new Telegraf(process.env.BOT_TOKEN)
 
