@@ -38,6 +38,10 @@ const i18n = new TelegrafI18n({
   directory: path.resolve(__dirname, 'locales')
 })
 
+// Also you can provide i18n data directly
+i18n.addLocale('en', {greeting: 'Hello!'})
+
+
 const app = new Telegraf(process.env.BOT_TOKEN)
 
 // telegraf-i18n will save current locale setting in session(if available)
