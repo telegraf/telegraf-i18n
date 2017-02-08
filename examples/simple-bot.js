@@ -42,4 +42,7 @@ app.command('/cart', (ctx) => {
   return ctx.reply(message)
 })
 
+// Add apple to cart
+app.command('/checkout', (ctx) => ctx.reply(ctx.i18n.t('checkout')))
+
 app.startPolling()
