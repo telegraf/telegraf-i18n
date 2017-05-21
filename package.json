@@ -36,7 +36,7 @@
     "js-yaml": "^3.6.1"
   },
   "peerDependencies": {
-    "telegraf": "^2.0.0 || ^3.0.0"
+    "telegraf": "^3.7.1"
   },
   "devDependencies": {
     "ava": "^0.19.1",
@@ -47,6 +47,6 @@
     "eslint-plugin-node": "^4.2.2",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
-    "telegraf": "^3.0.0"
+    "telegraf": "^3.7.1"
   }
 }

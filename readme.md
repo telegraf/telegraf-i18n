@@ -6,10 +6,6 @@
 
 Internationalization middleware for [Telegraf](https://github.com/telegraf/telegraf).
 
-**Note:** `telegraf-i18n v4.x` moved to use [ES6 template strings](https://github.com/dotcypress/compile-template) instead of Handlebars[*](https://github.com/wycats/handlebars.js/pull/1176)
-
-🚨 Sanitaze all input or don't update to `4.x` if you have user-generated content in templates.
-
 ## Installation
 
 ```js
@@ -27,13 +23,14 @@ yaml and json are ok
 Example directory structure:
 ├── locales
 │   ├── en.yaml
+│   ├── en-US.yaml
 │   ├── it.json
 │   └── ru.yaml
 └── bot.js
 */
 
 const i18n = new TelegrafI18n({
-  defaultLocale: 'en',
+  defaultLanguage: 'en',
   allowMissing: true,
   directory: path.resolve(__dirname, 'locales')
 })
@@ -43,7 +40,12 @@ i18n.loadLocale('en', {greeting: 'Hello!'})
 
 const app = new Telegraf(process.env.BOT_TOKEN)
 
-// telegraf-i18n will save current locale setting in session(if available)
+// telegraf-i18n can save current locale setting into session.
+// You need to use any session middleware and provide `sessionName` via configuration.
+const i18n = new TelegrafI18n({
+  sessionName: 'session',
+  directory: path.resolve(__dirname, 'locales')
+})
 app.use(Telegraf.memorySession())
 app.use(i18n.middleware())
 
