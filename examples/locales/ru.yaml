@@ -1,3 +1,2 @@
-greeting: Привет ${username}
+greeting: Привет!
 cart: В вашей корзине ${pluralize(appleCount, 'яблоко', 'яблокa', 'яблок')}
-add: Добавить в корзину

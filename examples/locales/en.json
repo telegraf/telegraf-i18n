@@ -1,5 +1,0 @@
-{
-  "greeting": "Hello ${username}",
-  "cart": "${from.first_name} ${from.last_name}, in your cart ${pluralize(appleCount, 'apple', 'apples')}",
-  "add": "Add to cart"
-}
