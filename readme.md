@@ -41,11 +41,11 @@ i18n.loadLocale('en', {greeting: 'Hello!'})
 const app = new Telegraf(process.env.BOT_TOKEN)
 
 // telegraf-i18n can save current locale setting into session.
-// You need to use any session middleware and provide `sessionName` via configuration.
 const i18n = new TelegrafI18n({
-  sessionName: 'session',
+  useSession: true,
   directory: path.resolve(__dirname, 'locales')
 })
+
 app.use(Telegraf.memorySession())
 app.use(i18n.middleware())
 
@@ -71,4 +71,14 @@ app.use((ctx) => {
   ctx.i18n.locale(code)                // Set current locale  
   ctx.i18n.t(resourceKey, [context])   // Get resource value (context will be used by template engine)
 });
+```
+
+## Helpers
+
+
+```js
+const { match } = require('telegraf-i18n')
+
+// In case you use custom keyboard with localized labels.
+bot.hears(match('keyboard.foo'), (ctx) => ...)
 ```
