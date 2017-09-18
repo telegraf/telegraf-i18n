@@ -31,7 +31,7 @@
     "test": "eslint . && ava"
   },
   "dependencies": {
-    "compile-template": "^0.2.0",
+    "compile-template": "^0.3.1",
     "debug": "^3.0.0",
     "js-yaml": "^3.6.1"
   },
@@ -39,7 +39,7 @@
     "telegraf": "^3.7.1"
   },
   "devDependencies": {
-    "ava": "^0.21.0",
+    "ava": "^0.22.0",
     "eslint": "^4.4.1",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-ava": "^4.2.0",
