@@ -17,23 +17,23 @@ const i18n = new I18n({
 
 app.use(i18n.middleware())
 
-// Start bot
-app.command('/start', ({ i18n, reply }) => reply(i18n.t('greeting')))
+// Start message handler
+app.start(({ i18n, reply }) => reply(i18n.t('greeting')))
 
 // Set locale to `en`
-app.command('/en', ({ i18n, reply }) => {
+app.command('en', ({ i18n, reply }) => {
   i18n.locale('en-US')
   return reply(i18n.t('greeting'))
 })
 
 // Set locale to `ru`
-app.command('/ru', ({ i18n, reply }) => {
+app.command('ru', ({ i18n, reply }) => {
   i18n.locale('ru')
   return reply(i18n.t('greeting'))
 })
 
 // Add apple to cart
-app.command('/add', ({ session, i18n, reply }) => {
+app.command('add', ({ session, i18n, reply }) => {
   session.appleCount = session.appleCount || 0
   session.appleCount++
   const message = i18n.t('cart', {appleCount: session.appleCount})
@@ -41,12 +41,12 @@ app.command('/add', ({ session, i18n, reply }) => {
 })
 
 // Add apple to cart
-app.command('/cart', (ctx) => {
+app.command('cart', (ctx) => {
   const message = ctx.i18n.t('cart', {appleCount: ctx.session.appleCount || 0})
   return ctx.reply(message)
 })
 
 // Checkout
-app.command('/checkout', ({ reply, i18n }) => reply(i18n.t('checkout')))
+app.command('checkout', ({ reply, i18n }) => reply(i18n.t('checkout')))
 
 app.startPolling()
