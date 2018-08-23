@@ -1,2 +1,2 @@
 greeting: Привет!
-cart: В вашей корзине ${pluralize(appleCount, 'яблоко', 'яблокa', 'яблок')}
+cart: В вашей корзине ${pluralize(apples, 'яблоко', 'яблокa', 'яблок')}
