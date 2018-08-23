@@ -1,4 +1,4 @@
 greeting: Hello!
 cart: |
-  ${from.first_name} ${from.last_name}, in your cart ${pluralize(appleCount, 'apple', 'apples')}
+  ${from.first_name} ${from.last_name}, in your cart ${pluralize(apples, 'apple', 'apples')}
 checkout: Thank you

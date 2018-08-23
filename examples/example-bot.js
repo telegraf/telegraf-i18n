@@ -6,7 +6,7 @@ const app = new Telegraf(process.env.BOT_TOKEN)
 
 // For testing only.
 // Information about current locale will be lost on app restart.
-app.use(Telegraf.memorySession())
+app.use(Telegraf.session())
 
 // Add middleware
 const i18n = new I18n({
@@ -34,15 +34,15 @@ app.command('ru', ({ i18n, reply }) => {
 
 // Add apple to cart
 app.command('add', ({ session, i18n, reply }) => {
-  session.appleCount = session.appleCount || 0
-  session.appleCount++
-  const message = i18n.t('cart', {appleCount: session.appleCount})
+  session.apples = session.apples || 0
+  session.apples++
+  const message = i18n.t('cart', {apples: session.apples})
   return reply(message)
 })
 
 // Add apple to cart
 app.command('cart', (ctx) => {
-  const message = ctx.i18n.t('cart', {appleCount: ctx.session.appleCount || 0})
+  const message = ctx.i18n.t('cart', {apples: ctx.session.apples || 0})
   return ctx.reply(message)
 })
 
