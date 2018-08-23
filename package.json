@@ -41,12 +41,12 @@
   },
   "devDependencies": {
     "ava": "^0.25.0",
-    "eslint": "^4.4.1",
+    "eslint": "^5.4.0",
     "eslint-config-standard": "^11.0.0",
-    "eslint-plugin-ava": "^4.2.0",
+    "eslint-plugin-ava": "^5.1.0",
     "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-node": "^6.0.1",
-    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.0",
     "eslint-plugin-standard": "^3.0.1",
     "telegraf": "^3.7.1"
   }
