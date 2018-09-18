@@ -36,13 +36,13 @@ app.command('ru', ({ i18n, reply }) => {
 app.command('add', ({ session, i18n, reply }) => {
   session.apples = session.apples || 0
   session.apples++
-  const message = i18n.t('cart', {apples: session.apples})
+  const message = i18n.t('cart', { apples: session.apples })
   return reply(message)
 })
 
 // Add apple to cart
 app.command('cart', (ctx) => {
-  const message = ctx.i18n.t('cart', {apples: ctx.session.apples || 0})
+  const message = ctx.i18n.t('cart', { apples: ctx.session.apples || 0 })
   return ctx.reply(message)
 })
 
