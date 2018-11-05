@@ -1,4 +1,3 @@
-greeting: Hello!
-cart: |
-  ${from.first_name} ${from.last_name}, in your cart ${pluralize(apples, 'apple', 'apples')}
+greeting: <b>Hello!</b>
+cart: ${from.first_name}, in your cart ${pluralize('apples', 'apple', 'apples')}
 checkout: Thank you
