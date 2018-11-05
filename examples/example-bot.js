@@ -1,39 +1,40 @@
 const Telegraf = require('telegraf')
 const path = require('path')
 const I18n = require('../lib/i18n')
+const { Extra } = Telegraf
 
-const app = new Telegraf(process.env.BOT_TOKEN)
-
-// For testing only.
-// Information about current locale will be lost on app restart.
-app.use(Telegraf.session())
-
-// Add middleware
+// i18n options
 const i18n = new I18n({
   directory: path.resolve(__dirname, 'locales'),
   defaultLanguage: 'en',
-  sessionName: 'session'
+  sessionName: 'session',
+  useSession: true
 })
 
-app.use(i18n.middleware())
+const bot = new Telegraf(process.env.BOT_TOKEN)
+bot.use(Telegraf.session())
+bot.use(i18n.middleware())
 
 // Start message handler
-app.start(({ i18n, reply }) => reply(i18n.t('greeting')))
+bot.start(({ i18n, replyWithHTML }) => replyWithHTML(i18n.t('greeting')))
+
+// Using i18n helpers
+bot.command('help', I18n.reply('greeting', Extra.HTML()))
 
 // Set locale to `en`
-app.command('en', ({ i18n, reply }) => {
+bot.command('en', ({ i18n, replyWithHTML }) => {
   i18n.locale('en-US')
-  return reply(i18n.t('greeting'))
+  return replyWithHTML(i18n.t('greeting'))
 })
 
 // Set locale to `ru`
-app.command('ru', ({ i18n, reply }) => {
+bot.command('ru', ({ i18n, replyWithHTML }) => {
   i18n.locale('ru')
-  return reply(i18n.t('greeting'))
+  return replyWithHTML(i18n.t('greeting'))
 })
 
 // Add apple to cart
-app.command('add', ({ session, i18n, reply }) => {
+bot.command('add', ({ session, i18n, reply }) => {
   session.apples = session.apples || 0
   session.apples++
   const message = i18n.t('cart', { apples: session.apples })
@@ -41,12 +42,11 @@ app.command('add', ({ session, i18n, reply }) => {
 })
 
 // Add apple to cart
-app.command('cart', (ctx) => {
+bot.command('cart', (ctx) => {
   const message = ctx.i18n.t('cart', { apples: ctx.session.apples || 0 })
   return ctx.reply(message)
 })
 
 // Checkout
-app.command('checkout', ({ reply, i18n }) => reply(i18n.t('checkout')))
-
-app.startPolling()
+bot.command('checkout', ({ reply, i18n }) => reply(i18n.t('checkout')))
+bot.startPolling()

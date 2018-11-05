@@ -75,10 +75,12 @@ app.use((ctx) => {
 
 ## Helpers
 
-
 ```js
-const { match } = require('telegraf-i18n')
+const { match, reply } = require('telegraf-i18n')
 
 // In case you use custom keyboard with localized labels.
 bot.hears(match('keyboard.foo'), (ctx) => ...)
+
+//Reply helper
+bot.command('help', reply('help'))
 ```
