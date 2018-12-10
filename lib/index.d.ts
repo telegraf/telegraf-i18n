@@ -19,6 +19,7 @@ declare module 'telegraf-i18n' {
         t (languageCode?: string, resourceKey?: string, templateData?: object): string;
         t (resourceKey?: string, templateData?: object): string;
         locale (): string;
+        locale (languageCode?: string): void;
     }
 
     export default I18n;
