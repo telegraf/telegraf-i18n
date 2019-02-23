@@ -5,6 +5,7 @@ declare module 'telegraf-i18n' {
         sessionName: string;
         allowMissing: boolean;
         defaultLanguage: string;
+        skipPluralize: boolean;
     }
 
     type ContextUpdate = (ctx: any, next?: (() => any) | undefined) => any;
