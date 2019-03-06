@@ -32,7 +32,7 @@ test('resourceKeys with depth', t => {
   ])
 })
 
-function createMultiLanguageExample() {
+function createMultiLanguageExample () {
   const i18n = new I18n()
   i18n.loadLocale('en', {
     greeting: 'Hello!',
