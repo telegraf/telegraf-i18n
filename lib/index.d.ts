@@ -1,10 +1,11 @@
 declare module 'telegraf-i18n' {
     interface Config {
-        directory: string;
-        useSession: boolean;
-        sessionName: string;
-        allowMissing: boolean;
-        defaultLanguage: string;
+        directory?: string;
+        useSession?: boolean;
+        sessionName?: string;
+        allowMissing?: boolean;
+        defaultLanguageOnMissing?: boolean;
+        defaultLanguage?: string;
     }
 
     type ContextUpdate = (ctx: any, next?: (() => any) | undefined) => any;
