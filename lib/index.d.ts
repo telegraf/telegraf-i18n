@@ -14,6 +14,7 @@ declare module 'telegraf-i18n' {
         loadLocales (directory: string): void;
         loadLocale (languageCode: string, i18Data: object): void;
         resetLocale (languageCode: string): void;
+        resourceKeys (languageCode: string): string[];
         middleware(): ContextUpdate;
         createContext (languageCode: string, templateData: object): void;
         t (languageCode?: string, resourceKey?: string, templateData?: object): string;
