@@ -59,3 +59,13 @@ test('overspecifiedKeys', t => {
     'checkout'
   ])
 })
+
+test('translationProgress', t => {
+  const i18n = createMultiLanguageExample()
+
+  // 'checkout' is missing
+  t.is(i18n.translationProgress('ru'), 0.5)
+
+  // Overspecified (unneeded 'checkout') but everything required is there
+  t.deepEqual(i18n.translationProgress('en', 'ru'), 1)
+})
