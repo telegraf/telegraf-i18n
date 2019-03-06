@@ -44,6 +44,14 @@ function createMultiLanguageExample () {
   return i18n
 }
 
+test('availableLocales', t => {
+  const i18n = createMultiLanguageExample()
+  t.deepEqual(i18n.availableLocales(), [
+    'en',
+    'ru'
+  ])
+})
+
 test('missingKeys ', t => {
   const i18n = createMultiLanguageExample()
   t.deepEqual(i18n.missingKeys('en', 'ru'), [])
