@@ -31,3 +31,31 @@ test('resourceKeys with depth', t => {
     'foo.hell.devil'
   ])
 })
+
+function createMultiLanguageExample() {
+  const i18n = new I18n()
+  i18n.loadLocale('en', {
+    greeting: 'Hello!',
+    checkout: 'Thank you!'
+  })
+  i18n.loadLocale('ru', {
+    greeting: 'Привет!'
+  })
+  return i18n
+}
+
+test('missingKeys ', t => {
+  const i18n = createMultiLanguageExample()
+  t.deepEqual(i18n.missingKeys('en', 'ru'), [])
+  t.deepEqual(i18n.missingKeys('ru'), [
+    'checkout'
+  ])
+})
+
+test('overspecifiedKeys', t => {
+  const i18n = createMultiLanguageExample()
+  t.deepEqual(i18n.overspecifiedKeys('ru'), [])
+  t.deepEqual(i18n.overspecifiedKeys('en', 'ru'), [
+    'checkout'
+  ])
+})
