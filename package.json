@@ -1,6 +1,6 @@
 {
   "name": "telegraf-i18n",
-  "version": "6.4.0",
+  "version": "6.5.0",
   "description": "Telegraf i18n engine",
   "main": "lib/i18n.js",
   "types": "lib/index.d.ts",
@@ -16,7 +16,7 @@
     "internationalization",
     "middleware"
   ],
-  "author": "Vitaly Domnikov <dotcypress@gmail.com>",
+  "author": "Vitaly Domnikov <oss@vitaly.codes>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/telegraf/telegraf-i18n/issues"
