@@ -32,6 +32,15 @@ test('resourceKeys with depth', t => {
   ])
 })
 
+test('resourceKeys of not existing locale are empty', t => {
+  const i18n = new I18n()
+  i18n.loadLocale('en', {
+    greeting: 'Hello!'
+  })
+
+  t.deepEqual(i18n.resourceKeys('de'), [])
+})
+
 function createMultiLanguageExample () {
   const i18n = new I18n()
   i18n.loadLocale('en', {
