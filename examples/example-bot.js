@@ -8,7 +8,11 @@ const i18n = new I18n({
   directory: path.resolve(__dirname, 'locales'),
   defaultLanguage: 'en',
   sessionName: 'session',
-  useSession: true
+  useSession: true,
+  templateData: {
+    pluralize: I18n.pluralize,
+    uppercase: (value) => value.toUpperCase()
+  }
 })
 
 const bot = new Telegraf(process.env.BOT_TOKEN)

@@ -31,7 +31,7 @@ Example directory structure:
 
 const i18n = new TelegrafI18n({
   defaultLanguage: 'en',
-  allowMissing: true,
+  allowMissing: false, // Default true
   directory: path.resolve(__dirname, 'locales')
 })
 
@@ -43,6 +43,7 @@ const app = new Telegraf(process.env.BOT_TOKEN)
 // telegraf-i18n can save current locale setting into session.
 const i18n = new TelegrafI18n({
   useSession: true,
+  defaultLanguageOnMissing: true, // implies allowMissing = true
   directory: path.resolve(__dirname, 'locales')
 })
 
