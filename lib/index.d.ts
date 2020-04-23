@@ -1,3 +1,5 @@
+import { ExtraReplyMessage } from "telegraf/typings/telegram-types";
+
 declare module 'telegraf-i18n' {
     interface Config {
         directory?: string;
@@ -27,6 +29,10 @@ declare module 'telegraf-i18n' {
         locale (): string;
         locale (languageCode?: string): void;
     }
+
+    export function match(resourceKey: string, templateData?: any): [string];
+
+    export function reply(resourceKey: string, extra?: ExtraReplyMessage): ContextUpdate;
 
     export default I18n;
 }
