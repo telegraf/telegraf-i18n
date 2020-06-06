@@ -29,4 +29,11 @@ declare module 'telegraf-i18n' {
     }
 
     export default I18n;
+
+    class I18nContext {
+        constructor(repository?: object, config?: Config, languageCode?: string, templateData?: object)
+        locale(languageCode?: string): void
+        getTemplate(languageCode?: string, resourceKey: string): string
+        t(resourceKey?: string, templateData?: object): string
+    }
 }
