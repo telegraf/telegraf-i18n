@@ -2,13 +2,13 @@ import * as fs from 'fs'
 import * as path from 'path'
 
 import {Context as TelegrafContext} from 'telegraf'
+import {ExtraReplyMessage, Message} from 'telegraf/typings/telegram-types'
 import {MiddlewareFn} from 'telegraf/typings/composer'
 import * as yaml from 'js-yaml'
 
 import {Config, LanguageCode, Repository, RepositoryEntry, TemplateData} from './types'
 import {I18nContext} from './context'
 import {pluralize} from './pluralize'
-import {ExtraReplyMessage, Message} from 'telegraf/typings/telegram-types'
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const compile = require('compile-template')
