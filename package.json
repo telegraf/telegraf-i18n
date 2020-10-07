@@ -31,7 +31,7 @@
   ],
   "scripts": {
     "start": "ts-node examples/example-bot.ts",
-    "test": "tsc --sourceMap && xo && ava"
+    "test": "tsc --sourceMap && xo && nyc ava"
   },
   "dependencies": {
     "compile-template": "^0.3.1",
@@ -53,6 +53,24 @@
     "ts-node": "^9.0.0",
     "typescript": "^4.0.2",
     "xo": "^0.33.1"
+  },
+  "nyc": {
+    "all": true,
+    "extension": [
+      ".ts"
+    ],
+    "include": [
+      "dist/source",
+      "source"
+    ],
+    "exclude": [
+      "**/*.d.ts",
+      "**/*.test.ts"
+    ],
+    "reporter": [
+      "lcov",
+      "text"
+    ]
   },
   "xo": {
     "semicolon": false,
