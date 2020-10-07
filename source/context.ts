@@ -32,7 +32,7 @@ export class I18nContext {
     this.shortLanguageCode = result.shortLanguageCode
   }
 
-  getTemplate(languageCode: string, resourceKey = ''): Template | undefined {
+  getTemplate(languageCode: string, resourceKey: string): Template | undefined {
     const repositoryEntry = this.repository[languageCode]
     return repositoryEntry?.[resourceKey]
   }
