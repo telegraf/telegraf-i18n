@@ -13,12 +13,12 @@ $ npm install telegraf-i18n
 ```
 
 ## Example
-  
-```js
-const Telegraf = require('telegraf')
-const TelegrafI18n = require('telegraf-i18n')
 
-/* 
+```js
+const {Telegraf} = require('telegraf')
+const {I18n} = require('telegraf-i18n')
+
+/*
 yaml and json are ok
 Example directory structure:
 ├── locales
@@ -29,7 +29,7 @@ Example directory structure:
 └── bot.js
 */
 
-const i18n = new TelegrafI18n({
+const i18n = new I18n({
   defaultLanguage: 'en',
   allowMissing: false, // Default true
   directory: path.resolve(__dirname, 'locales')
@@ -41,7 +41,7 @@ i18n.loadLocale('en', {greeting: 'Hello!'})
 const app = new Telegraf(process.env.BOT_TOKEN)
 
 // telegraf-i18n can save current locale setting into session.
-const i18n = new TelegrafI18n({
+const i18n = new I18n({
   useSession: true,
   defaultLanguageOnMissing: true, // implies allowMissing = true
   directory: path.resolve(__dirname, 'locales')
@@ -68,9 +68,9 @@ Telegraf user context props and functions:
 
 ```js
 app.use((ctx) => {
-  ctx.i18n.locale()                    // Get current locale 
-  ctx.i18n.locale(code)                // Set current locale  
-  ctx.i18n.t(resourceKey, [context])   // Get resource value (context will be used by template engine)
+  ctx.i18n.locale()                    // Get current locale
+  ctx.i18n.locale(code)                // Set current locale
+  ctx.i18n.t(resourceKey, [data])      // Get resource value (data will be used by template engine)
 });
 ```
 
