@@ -2,8 +2,8 @@
   "name": "telegraf-i18n",
   "version": "6.6.0",
   "description": "Telegraf i18n engine",
-  "main": "lib/i18n.js",
-  "types": "lib/index.d.ts",
+  "main": "dist/source",
+  "types": "dist/source",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/telegraf/telegraf-i18n.git"
@@ -23,31 +23,55 @@
   },
   "homepage": "https://github.com/telegraf/telegraf-i18n#readme",
   "engines": {
-    "node": ">=8"
+    "node": ">=10"
   },
   "files": [
-    "lib"
+    "dist/source",
+    "!*.test.*"
   ],
   "scripts": {
-    "test": "eslint . && ava"
+    "start": "ts-node examples/example-bot.ts",
+    "test": "tsc --sourceMap && xo && ava"
   },
   "dependencies": {
     "compile-template": "^0.3.1",
     "debug": "^4.0.1",
-    "js-yaml": "^3.6.1"
+    "js-yaml": "^3.14.0",
+    "tableize-object": "^0.1.0"
   },
   "peerDependencies": {
-    "telegraf": "^3.7.1"
+    "telegraf": "^3.38.0"
   },
   "devDependencies": {
-    "ava": "^2.2.0",
-    "eslint": "^6.1.0",
-    "eslint-config-standard": "^13.0.1",
-    "eslint-plugin-ava": "^7.1.0",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-node": "^9.1.0",
-    "eslint-plugin-promise": "^4.0.0",
-    "eslint-plugin-standard": "^4.0.0",
-    "telegraf": "^3.7.1"
+    "@sindresorhus/tsconfig": "^0.7.0",
+    "@types/js-yaml": "^3.12.5",
+    "@types/node": "^14.0.5",
+    "ava": "^3.0.0",
+    "del-cli": "^3.0.0",
+    "nyc": "^15.0.0",
+    "telegraf": "^3.38.0",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.2",
+    "xo": "^0.33.1"
+  },
+  "xo": {
+    "semicolon": false,
+    "space": true,
+    "rules": {
+      "@typescript-eslint/prefer-readonly-parameter-types": "warn",
+      "ava/no-ignored-test-files": "off"
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/*.test.*",
+          "examples/**/*.*",
+          "test/**/*.*"
+        ],
+        "rules": {
+          "@typescript-eslint/prefer-readonly-parameter-types": "off"
+        }
+      }
+    ]
   }
 }
