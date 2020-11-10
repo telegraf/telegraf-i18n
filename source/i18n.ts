@@ -166,7 +166,7 @@ function compileTemplates(root: Readonly<Record<string, string>>): RepositoryEnt
 
 /* eslint-disable @typescript-eslint/prefer-readonly-parameter-types */
 
-export function match(resourceKey: string, templateData: Readonly<TemplateData>): (text: string, ctx: TelegrafContextWithI18n) => string[] | null {
+export function match(resourceKey: string, templateData?: Readonly<TemplateData>): (text: string, ctx: TelegrafContextWithI18n) => string[] | null {
   return (text, ctx) => (text && ctx?.i18n && text === ctx.i18n.t(resourceKey, templateData)) ? [text] : null
 }
 
