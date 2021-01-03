@@ -76,7 +76,7 @@ function pluralizeInternal(languageCode: string, number: number, ...forms: reado
   const key = findRuleLanguage(languageCode)
   const rule = pluralRules[key]
   const form = forms[rule(number)]
-  return typeof form === 'function' ? form(number) : `${number} ${form}`
+  return typeof form === 'function' ? form(number) : `${number} ${String(form)}`
 }
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types

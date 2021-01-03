@@ -57,8 +57,7 @@ export class I18nContext {
       ...templateData
     }
 
-    for (const key of Object.keys(data)) {
-      const value = data[key]
+    for (const [key, value] of Object.entries(data)) {
       if (typeof value === 'function') {
         data[key] = value.bind(this)
       }
@@ -83,5 +82,5 @@ function parseLanguageCode(repository: Readonly<Repository>, defaultLanguage: st
 }
 
 function shortLanguageCodeFromLong(languageCode: string): string {
-  return languageCode.split('-')[0]
+  return languageCode.split('-')[0]!
 }
