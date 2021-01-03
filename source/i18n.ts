@@ -96,7 +96,7 @@ export class I18n {
 
   resourceKeys(languageCode: LanguageCode): string[] {
     const language = languageCode.toLowerCase()
-    return Object.keys(this.repository[language] || {})
+    return Object.keys(this.repository[language] ?? {})
   }
 
   missingKeys(languageOfInterest: LanguageCode, referenceLanguage = this.config.defaultLanguage): string[] {
