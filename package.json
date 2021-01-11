@@ -38,7 +38,7 @@
   "dependencies": {
     "compile-template": "^0.3.1",
     "debug": "^4.0.1",
-    "js-yaml": "^3.14.0",
+    "js-yaml": "^4.0.0",
     "tableize-object": "^0.1.0"
   },
   "peerDependencies": {
@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@sindresorhus/tsconfig": "^0.8.0",
-    "@types/js-yaml": "^3.12.5",
+    "@types/js-yaml": "^4.0.0",
     "@types/node": "^14.0.5",
     "ava": "^3.0.0",
     "del-cli": "^3.0.0",

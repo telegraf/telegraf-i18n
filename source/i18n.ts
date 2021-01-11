@@ -55,7 +55,7 @@ export class I18n {
       const fileContent = fs.readFileSync(path.resolve(directory, fileName), 'utf8')
       let data
       if (extension === '.yaml' || extension === '.yml') {
-        data = yaml.safeLoad(fileContent)
+        data = yaml.load(fileContent)
       } else if (extension === '.json') {
         data = JSON.parse(fileContent)
       }
