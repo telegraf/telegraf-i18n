@@ -1,9 +1,8 @@
 import * as fs from 'fs'
 import * as path from 'path'
 
-import {Context as TelegrafContext} from 'telegraf'
+import {Context as TelegrafContext, MiddlewareFn} from 'telegraf'
 import {ExtraReplyMessage, Message} from 'telegraf/typings/telegram-types'
-import {MiddlewareFn} from 'telegraf/typings/composer'
 import * as yaml from 'js-yaml'
 
 import {Config, LanguageCode, Repository, RepositoryEntry, TemplateData} from './types'
