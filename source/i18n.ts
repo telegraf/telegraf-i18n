@@ -165,8 +165,22 @@ function compileTemplates(root: Readonly<Record<string, string>>): RepositoryEnt
 
 /* eslint-disable @typescript-eslint/prefer-readonly-parameter-types */
 
-export function match(resourceKey: string, templateData?: Readonly<TemplateData>): (text: string, ctx: TelegrafContextWithI18n) => string[] | null {
-  return (text, ctx) => (text && ctx?.i18n && text === ctx.i18n.t(resourceKey, templateData)) ? [text] : null
+export function match(resourceKey: string, templateData?: Readonly<TemplateData>): (text: string, ctx: TelegrafContextWithI18n) => RegExpExecArray | null {
+  return (text, ctx) => {
+    if (!ctx?.i18n) {
+      throw new TypeError('Your context does not have i18n available. Check the examples if you use match correctly.')
+    }
+
+    if (text && ctx.i18n.t(resourceKey, templateData) === text) {
+      // TODO: better way of creating RegExpExecArray yourself?
+      const result = [text];
+      (result as RegExpExecArray).index = 0;
+      (result as RegExpExecArray).input = text
+      return result as RegExpExecArray
+    }
+
+    return null
+  }
 }
 
 export function reply(resourceKey: string, extra?: ExtraReplyMessage): (ctx: TelegrafContextWithI18n) => Promise<Message> {

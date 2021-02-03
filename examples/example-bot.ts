@@ -2,7 +2,7 @@ import * as path from 'path'
 
 import {Telegraf, Context as TelegrafContext, session} from 'telegraf'
 
-import {I18n, pluralize, reply} from '../source'
+import {I18n, pluralize, reply, match} from '../source'
 import {I18nContext} from '../source/context'
 
 interface Session {
@@ -35,6 +35,7 @@ bot.start(async ctx => ctx.replyWithHTML(ctx.i18n.t('greeting')))
 
 // Using i18n helpers
 bot.command('help', reply('greeting', {parse_mode: 'HTML'}))
+bot.hears(match('help'), reply('greeting', {parse_mode: 'HTML'}))
 
 // Set locale to `en`
 bot.command('en', async ctx => {
