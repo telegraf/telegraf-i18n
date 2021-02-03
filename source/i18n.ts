@@ -172,11 +172,10 @@ export function match(resourceKey: string, templateData?: Readonly<TemplateData>
     }
 
     if (text && ctx.i18n.t(resourceKey, templateData) === text) {
-      // TODO: better way of creating RegExpExecArray yourself?
-      const result = [text];
-      (result as RegExpExecArray).index = 0;
-      (result as RegExpExecArray).input = text
-      return result as RegExpExecArray
+      return Object.assign([text], {
+        index: 0,
+        input: text
+      })
     }
 
     return null
