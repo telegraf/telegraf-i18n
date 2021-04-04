@@ -2,7 +2,8 @@ import * as fs from 'fs'
 import * as path from 'path'
 
 import {Context as TelegrafContext, MiddlewareFn} from 'telegraf'
-import {ExtraReplyMessage, Message} from 'telegraf/typings/telegram-types'
+import {ExtraReplyMessage} from 'telegraf/typings/telegram-types'
+import {Message} from 'typegram'
 import * as yaml from 'js-yaml'
 
 import {Config, LanguageCode, Repository, RepositoryEntry, TemplateData} from './types'
@@ -182,7 +183,7 @@ export function match(resourceKey: string, templateData?: Readonly<TemplateData>
   }
 }
 
-export function reply(resourceKey: string, extra?: ExtraReplyMessage): (ctx: TelegrafContextWithI18n) => Promise<Message> {
+export function reply(resourceKey: string, extra?: ExtraReplyMessage): (ctx: TelegrafContextWithI18n) => Promise<Message.TextMessage> {
   return async ctx => ctx.reply(ctx.i18n.t(resourceKey), extra)
 }
 
