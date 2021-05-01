@@ -2,6 +2,14 @@
 	"name": "telegraf-i18n",
 	"version": "6.6.0",
 	"description": "Telegraf i18n engine",
+	"keywords": [
+		"telegram bot",
+		"telegraf",
+		"bot framework",
+		"i18n",
+		"internationalization",
+		"middleware"
+	],
 	"license": "MIT",
 	"bugs": {
 		"url": "https://github.com/telegraf/telegraf-i18n/issues"
@@ -11,14 +19,6 @@
 		"type": "git",
 		"url": "git+ssh://git@github.com/telegraf/telegraf-i18n.git"
 	},
-	"keywords": [
-		"telegram bot",
-		"telegraf",
-		"bot framework",
-		"i18n",
-		"internationalization",
-		"middleware"
-	],
 	"author": "Vitaly Domnikov <oss@vitaly.codes>",
 	"scripts": {
 		"build": "del-cli dist && tsc",
