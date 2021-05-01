@@ -60,6 +60,7 @@ export class I18n {
         data = JSON.parse(fileContent)
       }
 
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       this.loadLocale(languageCode, tableize(data))
     }
   }
@@ -77,6 +78,7 @@ export class I18n {
 
     this.repository[language] = {
       ...this.repository[language],
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       ...compileTemplates(tableize(ensureStringData))
     }
   }

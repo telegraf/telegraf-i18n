@@ -82,5 +82,6 @@ function parseLanguageCode(repository: Readonly<Repository>, defaultLanguage: st
 }
 
 function shortLanguageCodeFromLong(languageCode: string): string {
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   return languageCode.split('-')[0]!
 }
