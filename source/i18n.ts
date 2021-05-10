@@ -10,10 +10,10 @@ import {Config, LanguageCode, Repository, RepositoryEntry, TemplateData} from '.
 import {I18nContext} from './context'
 import {pluralize} from './pluralize'
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+// eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports
 const compile = require('compile-template')
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+// eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports
 const tableize = require('tableize-object')
 
 interface TelegrafContextWithI18n extends TelegrafContext {
@@ -126,6 +126,7 @@ export class I18n {
   middleware(): MiddlewareFn<TelegrafContextWithI18n> {
     // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
     return async (ctx, next) => {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       const session: Session | undefined = this.config.useSession && (ctx as any)[this.config.sessionName]
       const languageCode = session?.__language_code ?? ctx.from?.language_code ?? this.config.defaultLanguage
 

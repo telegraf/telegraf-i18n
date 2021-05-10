@@ -50,7 +50,7 @@
 		"telegraf": "^4.0.0",
 		"ts-node": "^9.0.0",
 		"typescript": "^4.2.3",
-		"xo": "^0.39.1"
+		"xo": "^0.40.0"
 	},
 	"files": [
 		"dist/source",
@@ -70,6 +70,10 @@
 		"space": true,
 		"rules": {
 			"@typescript-eslint/prefer-readonly-parameter-types": "warn",
+      "@typescript-eslint/no-unsafe-assignment": "off",
+      "@typescript-eslint/no-unsafe-call": "off",
+      "unicorn/prefer-module": "off",
+      "unicorn/prefer-node-protocol": "off",
 			"ava/no-ignored-test-files": "off"
 		},
 		"overrides": [
