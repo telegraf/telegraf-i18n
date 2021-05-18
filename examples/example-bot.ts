@@ -26,7 +26,7 @@ const i18n = new I18n({
   }
 })
 
-// eslint-disable-next-line @typescript-eslint/dot-notation, @typescript-eslint/no-non-null-assertion
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const bot = new Telegraf<MyContext>(process.env['BOT_TOKEN']!)
 bot.use(session())
 bot.use(i18n.middleware())
