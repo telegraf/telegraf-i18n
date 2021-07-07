@@ -1,3 +1,4 @@
 greeting: <b>Hello ${uppercase(from.first_name)}!</b>
 cart: ${from.first_name}, in your cart ${pluralize(apples, 'apple', 'apples')}
 checkout: Thank you
+help: help
