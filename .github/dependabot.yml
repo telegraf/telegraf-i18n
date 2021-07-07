@@ -8,8 +8,9 @@ updates:
     open-pull-requests-limit: 30
     schedule:
       interval: "weekly"
+      time: "03:37" # UTC
     commit-message:
-      prefix: "chore(npm):"
+      prefix: "build(npm):"
 
   - package-ecosystem: "github-actions"
     directory: "/"
