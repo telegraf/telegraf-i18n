@@ -34,9 +34,9 @@ export class I18n {
       sessionName: 'session',
       allowMissing: true,
       templateData: {
-        pluralize
+        pluralize,
       },
-      ...config
+      ...config,
     }
     if (this.config.directory) {
       this.loadLocales(this.config.directory)
@@ -60,7 +60,6 @@ export class I18n {
         data = JSON.parse(fileContent)
       }
 
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       this.loadLocale(languageCode, tableize(data))
     }
   }
@@ -78,8 +77,7 @@ export class I18n {
 
     this.repository[language] = {
       ...this.repository[language],
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-      ...compileTemplates(tableize(ensureStringData))
+      ...compileTemplates(tableize(ensureStringData)),
     }
   }
 
@@ -136,8 +134,8 @@ export class I18n {
         languageCode,
         {
           from: ctx.from,
-          chat: ctx.chat
-        }
+          chat: ctx.chat,
+        },
       )
 
       await next()
@@ -178,7 +176,7 @@ export function match(resourceKey: string, templateData?: Readonly<TemplateData>
     if (text && ctx.i18n.t(resourceKey, templateData) === text) {
       return Object.assign([text], {
         index: 0,
-        input: text
+        input: text,
       })
     }
 

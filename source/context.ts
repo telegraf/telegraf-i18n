@@ -12,7 +12,7 @@ export class I18nContext {
     this.config = config
     this.templateData = {
       ...config.templateData,
-      ...templateData
+      ...templateData,
     }
 
     const result = parseLanguageCode(this.repository, this.config.defaultLanguage, languageCode)
@@ -54,7 +54,7 @@ export class I18nContext {
 
     const data: TemplateData = {
       ...this.templateData,
-      ...templateData
+      ...templateData,
     }
 
     for (const [key, value] of Object.entries(data)) {
@@ -77,11 +77,10 @@ function parseLanguageCode(repository: Readonly<Repository>, defaultLanguage: st
 
   return {
     languageCode: code,
-    shortLanguageCode: shortLanguageCodeFromLong(code)
+    shortLanguageCode: shortLanguageCodeFromLong(code),
   }
 }
 
 function shortLanguageCodeFromLong(languageCode: string): string {
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   return languageCode.split('-')[0]!
 }

@@ -46,7 +46,7 @@ const pluralRules: Readonly<Record<AvailableRuleLanguages, (n: number) => number
     }
 
     return 5
-  }
+  },
 }
 
 const AVAILABLE_RULE_LANGUAGES = Object.keys(pluralRules) as readonly AvailableRuleLanguages[]
@@ -59,7 +59,7 @@ const mapping: Readonly<Record<AvailableRuleLanguages, readonly LanguageCode[]>>
   czech: ['cs', 'sk'],
   icelandic: ['is'],
   polish: ['pl'],
-  arabic: ['ar']
+  arabic: ['ar'],
 }
 
 function findRuleLanguage(languageCode: string): AvailableRuleLanguages {

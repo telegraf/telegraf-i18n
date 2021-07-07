@@ -22,11 +22,10 @@ const i18n = new I18n({
   useSession: true,
   templateData: {
     pluralize,
-    uppercase: (value: string) => value.toUpperCase()
-  }
+    uppercase: (value: string) => value.toUpperCase(),
+  },
 })
 
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const bot = new Telegraf<MyContext>(process.env['BOT_TOKEN']!)
 bot.use(session())
 bot.use(i18n.middleware())

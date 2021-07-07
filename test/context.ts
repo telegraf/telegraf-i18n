@@ -6,17 +6,17 @@ import {I18nContext} from '../source/context'
 const EXAMPLE_REPO: Readonly<Repository> = {
   en: {
     desk: () => 'desk',
-    foo: () => 'bar'
+    foo: () => 'bar',
   },
   de: {
-    desk: () => 'Tisch'
-  }
+    desk: () => 'Tisch',
+  },
 }
 
 const MINIMAL_CONFIG: Config = {
   defaultLanguage: 'en',
   sessionName: 'session',
-  templateData: {}
+  templateData: {},
 }
 
 test('can get language', t => {
@@ -39,7 +39,7 @@ test('can translate something', t => {
 test('allowMissing', t => {
   const config: Config = {
     ...MINIMAL_CONFIG,
-    allowMissing: true
+    allowMissing: true,
   }
 
   const i18n = new I18nContext(EXAMPLE_REPO, config, 'de', {})
@@ -49,7 +49,7 @@ test('allowMissing', t => {
 test('defaultLanguageOnMissing', t => {
   const config: Config = {
     ...MINIMAL_CONFIG,
-    defaultLanguageOnMissing: true
+    defaultLanguageOnMissing: true,
   }
 
   const i18n = new I18nContext(EXAMPLE_REPO, config, 'de', {})
