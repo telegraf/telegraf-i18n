@@ -4,6 +4,7 @@
 	"description": "Telegraf i18n engine",
 	"keywords": [
 		"telegram bot",
+    "grammy",
 		"telegraf",
 		"bot framework",
 		"i18n",
@@ -33,11 +34,7 @@
 	"dependencies": {
 		"compile-template": "^0.3.1",
 		"debug": "^4.0.1",
-		"js-yaml": "^4.0.0",
-		"typegram": "^3.2.3"
-	},
-	"peerDependencies": {
-		"telegraf": "^4.0.0"
+		"js-yaml": "^4.0.0"
 	},
 	"devDependencies": {
 		"@sindresorhus/tsconfig": "^1.0.1",
@@ -45,6 +42,7 @@
 		"@types/node": "^16.0.0",
 		"ava": "^3.0.0",
 		"del-cli": "^4.0.0",
+		"grammy": "^1.2.0",
 		"nyc": "^15.0.0",
 		"telegraf": "^4.0.0",
 		"ts-node": "^10.0.0",

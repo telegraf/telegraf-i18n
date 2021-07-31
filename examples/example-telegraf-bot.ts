@@ -1,15 +1,14 @@
 import * as path from 'path'
 
-import {Telegraf, Context as TelegrafContext, session} from 'telegraf'
+import {Telegraf, Context as BaseContext, session} from 'telegraf'
 
-import {I18n, pluralize, reply, match} from '../source'
-import {I18nContext} from '../source/context'
+import {I18n, pluralize, I18nContext} from '../source'
 
 interface Session {
   apples?: number;
 }
 
-interface MyContext extends TelegrafContext {
+interface MyContext extends BaseContext {
   readonly i18n: I18nContext;
   session: Session;
 }
@@ -31,22 +30,18 @@ bot.use(session())
 bot.use(i18n.middleware())
 
 // Start message handler
-bot.start(async ctx => ctx.replyWithHTML(ctx.i18n.t('greeting')))
-
-// Using i18n helpers
-bot.command('help', reply('greeting', {parse_mode: 'HTML'}))
-bot.hears(match('help'), reply('greeting', {parse_mode: 'HTML'}))
+bot.command('start', async ctx => ctx.reply(ctx.i18n.t('greeting'), {parse_mode: 'HTML'}))
 
 // Set locale to `en`
 bot.command('en', async ctx => {
   ctx.i18n.locale('en-US')
-  return ctx.replyWithHTML(ctx.i18n.t('greeting'))
+  return ctx.reply(ctx.i18n.t('greeting'), {parse_mode: 'HTML'})
 })
 
 // Set locale to `ru`
 bot.command('ru', async ctx => {
   ctx.i18n.locale('ru')
-  return ctx.replyWithHTML(ctx.i18n.t('greeting'))
+  return ctx.reply(ctx.i18n.t('greeting'), {parse_mode: 'HTML'})
 })
 
 // Add apple to cart

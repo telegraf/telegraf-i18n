@@ -1,9 +1,6 @@
 import * as fs from 'fs'
 import * as path from 'path'
 
-import {Context as TelegrafContext, MiddlewareFn} from 'telegraf'
-import {ExtraReplyMessage} from 'telegraf/typings/telegram-types'
-import {Message} from 'typegram'
 import * as yaml from 'js-yaml'
 
 import {Config, LanguageCode, Repository, RepositoryEntry, TemplateData} from './types'
@@ -14,8 +11,13 @@ import {tableize} from './tabelize.js'
 // eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports
 const compile = require('compile-template')
 
-interface TelegrafContextWithI18n extends TelegrafContext {
-  i18n: I18nContext;
+interface MinimalMiddlewareContext {
+  readonly from?: {
+    readonly language_code?: string;
+  };
+  readonly chat: unknown;
+
+  readonly i18n: I18nContext;
 }
 
 interface Session {
@@ -117,14 +119,15 @@ export class I18n {
     return new I18nContext(this.repository, this.config, languageCode, templateData)
   }
 
-  middleware(): MiddlewareFn<TelegrafContextWithI18n> {
+  middleware(): (ctx: MinimalMiddlewareContext, next: () => Promise<void>) => Promise<void> {
     // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
     return async (ctx, next) => {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       const session: Session | undefined = this.config.useSession && (ctx as any)[this.config.sessionName]
-      const languageCode = session?.__language_code ?? ctx.from?.language_code ?? this.config.defaultLanguage
+      const languageCode = session?.__language_code ?? ctx.from?.language_code ?? this.config.defaultLanguage;
 
-      ctx.i18n = new I18nContext(
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      (ctx as any).i18n = new I18nContext(
         this.repository,
         this.config,
         languageCode,
@@ -160,28 +163,3 @@ function compileTemplates(root: Readonly<Record<string, string>>): RepositoryEnt
 
   return result
 }
-
-/* eslint-disable @typescript-eslint/prefer-readonly-parameter-types */
-
-export function match(resourceKey: string, templateData?: Readonly<TemplateData>): (text: string, ctx: TelegrafContextWithI18n) => RegExpExecArray | null {
-  return (text, ctx) => {
-    if (!ctx?.i18n) {
-      throw new TypeError('Your context does not have i18n available. Check the examples if you use match correctly.')
-    }
-
-    if (text && ctx.i18n.t(resourceKey, templateData) === text) {
-      return Object.assign([text], {
-        index: 0,
-        input: text,
-      })
-    }
-
-    return null
-  }
-}
-
-export function reply(resourceKey: string, extra?: ExtraReplyMessage): (ctx: TelegrafContextWithI18n) => Promise<Message.TextMessage> {
-  return async ctx => ctx.reply(ctx.i18n.t(resourceKey), extra)
-}
-
-/* eslint-enable @typescript-eslint/prefer-readonly-parameter-types */
