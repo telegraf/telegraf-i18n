@@ -34,7 +34,6 @@
 		"compile-template": "^0.3.1",
 		"debug": "^4.0.1",
 		"js-yaml": "^4.0.0",
-		"tableize-object": "^0.1.0",
 		"typegram": "^3.2.3"
 	},
 	"peerDependencies": {

@@ -9,12 +9,10 @@ import * as yaml from 'js-yaml'
 import {Config, LanguageCode, Repository, RepositoryEntry, TemplateData} from './types'
 import {I18nContext} from './context'
 import {pluralize} from './pluralize'
+import {tableize} from './tabelize.js'
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports
 const compile = require('compile-template')
-
-// eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports
-const tableize = require('tableize-object')
 
 interface TelegrafContextWithI18n extends TelegrafContext {
   i18n: I18nContext;
@@ -65,19 +63,17 @@ export class I18n {
   }
 
   loadLocale(languageCode: LanguageCode, i18nData: Readonly<Record<string, unknown>>): void {
-    const language = languageCode.toLowerCase()
-
-    // Get object keys with dot dotation: {a: {b: value}} -> {'a.b': value}
-    const tableized: Record<string, string | number | unknown> = tableize(i18nData)
+    const tableized = tableize(i18nData)
 
     const ensureStringData: Record<string, string> = {}
     for (const [key, value] of Object.entries(tableized)) {
       ensureStringData[key] = String(value)
     }
 
+    const language = languageCode.toLowerCase()
     this.repository[language] = {
       ...this.repository[language],
-      ...compileTemplates(tableize(ensureStringData)),
+      ...compileTemplates(ensureStringData),
     }
   }
 
