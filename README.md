@@ -1,5 +1,3 @@
-[![NPM Version](https://img.shields.io/npm/v/telegraf-i18n.svg?style=flat-square)](https://www.npmjs.com/package/telegraf-i18n)
-
 # i18n for grammY and Telegraf
 
 Internationalization middleware for [grammY](github.com/grammyjs/grammy) and [Telegraf](https://github.com/telegraf/telegraf).
