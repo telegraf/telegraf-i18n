@@ -48,7 +48,7 @@ bot.command('start', async ctx => ctx.reply(ctx.i18n.t('greeting')))
 bot.start()
 ```
 
-See full [example](/examples).
+A full example for both grammY and Telegraf are in the [examples folder](/examples).
 
 ## User context
 
