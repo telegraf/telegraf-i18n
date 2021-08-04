@@ -1,20 +1,20 @@
-const test = require('ava')
+import test from 'ava'
 
-const I18n = require('../lib/i18n.js')
+import {I18n} from '../source/i18n'
 
 test('can translate', t => {
   const i18n = new I18n()
   i18n.loadLocale('en', {
-    greeting: 'Hello!'
+    greeting: 'Hello!',
   })
   t.is(i18n.t('en', 'greeting'), 'Hello!')
 })
 
 test('allowMissing false throws', t => {
   const i18n = new I18n({
-    allowMissing: false
+    allowMissing: false,
   })
   t.throws(() => {
     i18n.t('en', 'greeting')
-  }, 'telegraf-i18n: \'en.greeting\' not found')
+  }, {message: 'telegraf-i18n: \'en.greeting\' not found'})
 })
