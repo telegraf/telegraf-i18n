@@ -1,6 +1,6 @@
 {
   "name": "telegraf-i18n",
-  "version": "6.6.0",
+  "version": "6.6.2",
   "description": "Telegraf i18n engine",
   "main": "lib/i18n.js",
   "types": "lib/index.d.ts",
@@ -34,10 +34,10 @@
   "dependencies": {
     "compile-template": "^0.3.1",
     "debug": "^4.0.1",
-    "js-yaml": "^3.6.1"
+    "js-yaml": "4.1.1"
   },
   "peerDependencies": {
-    "telegraf": "^3.7.1"
+    "telegraf": "^4.16.3"
   },
   "devDependencies": {
     "ava": "^2.2.0",
@@ -48,6 +48,6 @@
     "eslint-plugin-node": "^9.1.0",
     "eslint-plugin-promise": "^4.0.0",
     "eslint-plugin-standard": "^4.0.0",
-    "telegraf": "^3.7.1"
+    "telegraf": "^4.16.3"
   }
 }

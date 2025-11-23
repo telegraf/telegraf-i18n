@@ -32,3 +32,11 @@ node_modules
 # Optional REPL history
 .node_repl_history
 package-lock.json
+
+/.idea/.gitignore
+/.idea/codeStyles/codeStyleConfig.xml
+/.idea/modules.xml
+/.idea/codeStyles/Project.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/telegraf-i18n.iml
+/.idea/vcs.xml
